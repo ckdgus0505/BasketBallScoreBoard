@@ -12,10 +12,11 @@ namespace BasketBallScoreBoard
 {
     public partial class ScoreBoard : Form
     {
-        public ScoreBoard()
+        public ScoreBoard(int aTeamScore, int bTeamScore)
         {
             InitializeComponent();
-
+            txtAscore.Text = aTeamScore.ToString();
+            txtBscore.Text = bTeamScore.ToString();
         }
     }
 }

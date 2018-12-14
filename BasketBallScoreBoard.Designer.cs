@@ -57,6 +57,8 @@
             this.btnBcut = new System.Windows.Forms.Button();
             this.btnbfoul = new System.Windows.Forms.Button();
             this.btnBstr = new System.Windows.Forms.Button();
+            this.txtAscore = new System.Windows.Forms.TextBox();
+            this.txtBscore = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnPlay
@@ -341,12 +343,46 @@
             this.btnBstr.Text = "작전\r\n타임";
             this.btnBstr.UseVisualStyleBackColor = true;
             // 
+            // txtAscore
+            // 
+            this.txtAscore.BackColor = System.Drawing.Color.Black;
+            this.txtAscore.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtAscore.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.txtAscore.Font = new System.Drawing.Font("Microsoft Sans Serif", 55.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAscore.ForeColor = System.Drawing.Color.Red;
+            this.txtAscore.Location = new System.Drawing.Point(59, 410);
+            this.txtAscore.MaxLength = 3;
+            this.txtAscore.Name = "txtAscore";
+            this.txtAscore.ReadOnly = true;
+            this.txtAscore.Size = new System.Drawing.Size(245, 167);
+            this.txtAscore.TabIndex = 3;
+            this.txtAscore.Text = "0";
+            this.txtAscore.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtBscore
+            // 
+            this.txtBscore.BackColor = System.Drawing.Color.Black;
+            this.txtBscore.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtBscore.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.txtBscore.Font = new System.Drawing.Font("Microsoft Sans Serif", 55.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBscore.ForeColor = System.Drawing.Color.Red;
+            this.txtBscore.Location = new System.Drawing.Point(673, 410);
+            this.txtBscore.MaxLength = 3;
+            this.txtBscore.Name = "txtBscore";
+            this.txtBscore.ReadOnly = true;
+            this.txtBscore.Size = new System.Drawing.Size(245, 167);
+            this.txtBscore.TabIndex = 4;
+            this.txtBscore.Text = "0";
+            this.txtBscore.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // BasketBallScoreBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1065, 344);
+            this.ClientSize = new System.Drawing.Size(1065, 693);
+            this.Controls.Add(this.txtBscore);
+            this.Controls.Add(this.txtAscore);
             this.Controls.Add(this.btnBstr);
             this.Controls.Add(this.btnB3);
             this.Controls.Add(this.btnReset);
@@ -381,6 +417,7 @@
             this.Name = "BasketBallScoreBoard";
             this.Text = "BasketBallScoreBoard";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -414,6 +451,8 @@
         private System.Windows.Forms.Button btnBcut;
         private System.Windows.Forms.Button btnbfoul;
         private System.Windows.Forms.Button btnBstr;
+        private System.Windows.Forms.TextBox txtAscore;
+        private System.Windows.Forms.TextBox txtBscore;
     }
 }
 
