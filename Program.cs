@@ -16,7 +16,7 @@ namespace BasketBallScoreBoard
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new scoreBoard());
+            Application.Run(new BasketBallScoreBoard());
         }
     }
 }

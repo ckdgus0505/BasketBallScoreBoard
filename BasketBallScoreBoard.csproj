@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{899BF2F4-862A-4E44-A09B-0AC441DE0448}</ProjectGuid>
+    <ProjectGuid>{DC25834B-8F1B-47E6-9370-A022BD22029A}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>BasketBallScoreBoard</RootNamespace>
     <AssemblyName>BasketBallScoreBoard</AssemblyName>
@@ -46,25 +46,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="controlBoard.cs">
+    <Compile Include="ScoreBoard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="controlBoard.Designer.cs">
-      <DependentUpon>controlBoard.cs</DependentUpon>
+    <Compile Include="ScoreBoard.Designer.cs">
+      <DependentUpon>ScoreBoard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="BasketBallScoreBoard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="BasketBallScoreBoard.Designer.cs">
+      <DependentUpon>BasketBallScoreBoard.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="controlBoard.resx">
-      <DependentUpon>controlBoard.cs</DependentUpon>
+    <EmbeddedResource Include="ScoreBoard.resx">
+      <DependentUpon>ScoreBoard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="BasketBallScoreBoard.resx">
+      <DependentUpon>BasketBallScoreBoard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
