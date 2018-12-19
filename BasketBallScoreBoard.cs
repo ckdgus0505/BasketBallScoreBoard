@@ -20,15 +20,23 @@ namespace BasketBallScoreBoard
         {
             InitializeComponent();
             Load += BasketBallScoreBoard_Load;
-            btnA1.Click += BtnA1_Click;
-            btnA2.Click += BtnA2_Click;
-            btnA3.Click += BtnA3_Click;
-            btnB1.Click += BtnB1_Click;
-            btnB2.Click += BtnB2_Click;
-            btnB3.Click += BtnB3_Click;
-            btnAcut.Click += BtnAcut_Click;
-            btnBcut.Click += BtnBcut_Click;
             btnScoreReset.Click += BtnScoreReset_Click;
+
+        }
+
+        private void BtnAScore(object sender, EventArgs e)
+        {
+            Button a = (Button)sender;
+            aTeamScore = aTeamScore + int.Parse(a.Text);
+            txtAscore.Text = aTeamScore.ToString();
+
+        }
+
+        private void BtnBScore(object sender, EventArgs e)
+        {
+            Button b = (Button)sender;
+            bTeamScore = bTeamScore + int.Parse(b.Text);
+            txtBscore.Text = bTeamScore.ToString();
 
         }
 
@@ -36,55 +44,11 @@ namespace BasketBallScoreBoard
         {
             aTeamScore = 0;
             bTeamScore = 0;
-        }
-
-        private void BtnBcut_Click(object sender, EventArgs e)
-        {
-            bTeamScore -= 1;
+            txtAscore.Text = aTeamScore.ToString();
             txtBscore.Text = bTeamScore.ToString();
         }
 
-        private void BtnAcut_Click(object sender, EventArgs e)
-        {
-            aTeamScore -= 1;
-            txtAscore.Text = aTeamScore.ToString();
-        }
-
-        private void BtnB3_Click(object sender, EventArgs e)
-        {
-            bTeamScore += 3;
-            txtBscore.Text = bTeamScore.ToString();
-        }
-
-        private void BtnB2_Click(object sender, EventArgs e)
-        {
-            bTeamScore += 2;
-            txtBscore.Text = bTeamScore.ToString();
-        }
-
-        private void BtnB1_Click(object sender, EventArgs e)
-        {
-            bTeamScore += 1;
-            txtBscore.Text = bTeamScore.ToString();
-        }
-
-        private void BtnA3_Click(object sender, EventArgs e)
-        {
-            aTeamScore += 3;
-            txtAscore.Text = aTeamScore.ToString();
-        }
-
-        private void BtnA2_Click(object sender, EventArgs e)
-        {
-            aTeamScore += 2;
-            txtAscore.Text = aTeamScore.ToString();
-        }
-
-        private void BtnA1_Click(object sender, EventArgs e)
-        {
-            aTeamScore += 1;
-            txtAscore.Text = aTeamScore.ToString();
-        }
+  
 
         private void BasketBallScoreBoard_Load(object sender, EventArgs e)
         {

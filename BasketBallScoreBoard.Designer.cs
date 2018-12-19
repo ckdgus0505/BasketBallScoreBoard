@@ -210,8 +210,9 @@
             this.btnA1.Name = "btnA1";
             this.btnA1.Size = new System.Drawing.Size(143, 75);
             this.btnA1.TabIndex = 1;
-            this.btnA1.Text = "1P";
+            this.btnA1.Text = "1";
             this.btnA1.UseVisualStyleBackColor = true;
+            this.btnA1.Click += new System.EventHandler(this.BtnAScore);
             // 
             // btnA2
             // 
@@ -220,8 +221,9 @@
             this.btnA2.Name = "btnA2";
             this.btnA2.Size = new System.Drawing.Size(143, 75);
             this.btnA2.TabIndex = 1;
-            this.btnA2.Text = "2P";
+            this.btnA2.Text = "2";
             this.btnA2.UseVisualStyleBackColor = true;
+            this.btnA2.Click += new System.EventHandler(this.BtnAScore);
             // 
             // btnA3
             // 
@@ -230,8 +232,9 @@
             this.btnA3.Name = "btnA3";
             this.btnA3.Size = new System.Drawing.Size(143, 75);
             this.btnA3.TabIndex = 1;
-            this.btnA3.Text = "3P";
+            this.btnA3.Text = "3";
             this.btnA3.UseVisualStyleBackColor = true;
+            this.btnA3.Click += new System.EventHandler(this.BtnAScore);
             // 
             // btnScoreReset
             // 
@@ -250,8 +253,9 @@
             this.btnB1.Name = "btnB1";
             this.btnB1.Size = new System.Drawing.Size(143, 75);
             this.btnB1.TabIndex = 1;
-            this.btnB1.Text = "1P";
+            this.btnB1.Text = "1";
             this.btnB1.UseVisualStyleBackColor = true;
+            this.btnB1.Click += new System.EventHandler(this.BtnBScore);
             // 
             // btnB2
             // 
@@ -260,8 +264,9 @@
             this.btnB2.Name = "btnB2";
             this.btnB2.Size = new System.Drawing.Size(143, 75);
             this.btnB2.TabIndex = 1;
-            this.btnB2.Text = "2P";
+            this.btnB2.Text = "2";
             this.btnB2.UseVisualStyleBackColor = true;
+            this.btnB2.Click += new System.EventHandler(this.BtnBScore);
             // 
             // btnB3
             // 
@@ -270,8 +275,9 @@
             this.btnB3.Name = "btnB3";
             this.btnB3.Size = new System.Drawing.Size(143, 75);
             this.btnB3.TabIndex = 1;
-            this.btnB3.Text = "3P";
+            this.btnB3.Text = "3";
             this.btnB3.UseVisualStyleBackColor = true;
+            this.btnB3.Click += new System.EventHandler(this.BtnBScore);
             // 
             // btnAcut
             // 
@@ -280,8 +286,9 @@
             this.btnAcut.Name = "btnAcut";
             this.btnAcut.Size = new System.Drawing.Size(143, 75);
             this.btnAcut.TabIndex = 1;
-            this.btnAcut.Text = "감점";
+            this.btnAcut.Text = "-1";
             this.btnAcut.UseVisualStyleBackColor = true;
+            this.btnAcut.Click += new System.EventHandler(this.BtnAScore);
             // 
             // btnAfoul
             // 
@@ -320,8 +327,9 @@
             this.btnBcut.Name = "btnBcut";
             this.btnBcut.Size = new System.Drawing.Size(143, 75);
             this.btnBcut.TabIndex = 1;
-            this.btnBcut.Text = "감점";
+            this.btnBcut.Text = "-1";
             this.btnBcut.UseVisualStyleBackColor = true;
+            this.btnBcut.Click += new System.EventHandler(this.BtnBScore);
             // 
             // btnbfoul
             // 
