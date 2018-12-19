@@ -14,6 +14,7 @@ namespace BasketBallScoreBoard
     {
         int aTeamScore = 0, aTeamFoul = 0, aTeamTime = 0;
         int bTeamScore = 0, bTeamFoul = 0, bTeamTime = 0;
+        int quarter = 1;
         bool isAteamOffensive = true;
 
         public BasketBallScoreBoard()
@@ -48,7 +49,52 @@ namespace BasketBallScoreBoard
             txtBscore.Text = bTeamScore.ToString();
         }
 
-  
+        private void BtnAFoul(object sender, EventArgs e)
+        {
+            Button a = (Button)sender;
+            aTeamFoul ++ ;
+        }
+
+
+        private void BtnBFoul(object sender, EventArgs e)
+        {
+            Button b = (Button)sender;
+            bTeamFoul++;
+        }
+
+        private void BtnATime(object sender, EventArgs e)
+        {
+            Button a = (Button)sender;
+            if (aTeamTime >= 0 && aTeamTime <= 3)
+            {
+                aTeamTime++;
+                if (aTeamTime == 1) rbtnA1time.Checked = true;
+                if (aTeamTime == 2) rbtnA2time.Checked = true;
+                if (aTeamTime == 3)
+                {   
+                    rbtnA3time.Checked = true;
+                    btnAstr.Enabled = false;
+                }
+            }
+            
+        }
+
+        private void BtnBTime(object sender, EventArgs e)
+        {
+            Button b = (Button)sender;
+            if (bTeamTime >= 0 && bTeamTime <= 3)
+            {
+                bTeamTime++;
+                if (bTeamTime == 1) rbtnB1time.Checked = true;
+                if (bTeamTime == 2) rbtnB2time.Checked = true;
+                if (bTeamTime == 3)
+                {
+                    rbtnB3time.Checked = true;
+                    btnBstr.Enabled = false;
+                }
+            }
+
+        }
 
         private void BasketBallScoreBoard_Load(object sender, EventArgs e)
         {

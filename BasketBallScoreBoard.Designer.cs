@@ -59,6 +59,18 @@
             this.btnBstr = new System.Windows.Forms.Button();
             this.txtAscore = new System.Windows.Forms.TextBox();
             this.txtBscore = new System.Windows.Forms.TextBox();
+            this.TeamA = new System.Windows.Forms.Panel();
+            this.radioButton7 = new System.Windows.Forms.RadioButton();
+            this.rbtnA3time = new System.Windows.Forms.RadioButton();
+            this.rbtnA2time = new System.Windows.Forms.RadioButton();
+            this.rbtnA1time = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.TeamB = new System.Windows.Forms.GroupBox();
+            this.rbtnB3time = new System.Windows.Forms.RadioButton();
+            this.rbtnB2time = new System.Windows.Forms.RadioButton();
+            this.rbtnB1time = new System.Windows.Forms.RadioButton();
+            this.TeamA.SuspendLayout();
+            this.TeamB.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnPlay
@@ -271,7 +283,7 @@
             // btnB3
             // 
             this.btnB3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnB3.Location = new System.Drawing.Point(910, 174);
+            this.btnB3.Location = new System.Drawing.Point(906, 174);
             this.btnB3.Name = "btnB3";
             this.btnB3.Size = new System.Drawing.Size(143, 75);
             this.btnB3.TabIndex = 1;
@@ -309,6 +321,7 @@
             this.btnAstr.TabIndex = 1;
             this.btnAstr.Text = "작전\r\n타임";
             this.btnAstr.UseVisualStyleBackColor = true;
+            this.btnAstr.Click += new System.EventHandler(this.BtnATime);
             // 
             // btnQuarter
             // 
@@ -350,6 +363,7 @@
             this.btnBstr.TabIndex = 1;
             this.btnBstr.Text = "작전\r\n타임";
             this.btnBstr.UseVisualStyleBackColor = true;
+            this.btnBstr.Click += new System.EventHandler(this.BtnBTime);
             // 
             // txtAscore
             // 
@@ -358,7 +372,7 @@
             this.txtAscore.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.txtAscore.Font = new System.Drawing.Font("Microsoft Sans Serif", 55.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAscore.ForeColor = System.Drawing.Color.Red;
-            this.txtAscore.Location = new System.Drawing.Point(59, 410);
+            this.txtAscore.Location = new System.Drawing.Point(161, 629);
             this.txtAscore.MaxLength = 3;
             this.txtAscore.Name = "txtAscore";
             this.txtAscore.ReadOnly = true;
@@ -374,7 +388,7 @@
             this.txtBscore.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.txtBscore.Font = new System.Drawing.Font("Microsoft Sans Serif", 55.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBscore.ForeColor = System.Drawing.Color.Red;
-            this.txtBscore.Location = new System.Drawing.Point(673, 410);
+            this.txtBscore.Location = new System.Drawing.Point(655, 629);
             this.txtBscore.MaxLength = 3;
             this.txtBscore.Name = "txtBscore";
             this.txtBscore.ReadOnly = true;
@@ -383,12 +397,123 @@
             this.txtBscore.Text = "0";
             this.txtBscore.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // TeamA
+            // 
+            this.TeamA.Controls.Add(this.radioButton7);
+            this.TeamA.Controls.Add(this.rbtnA3time);
+            this.TeamA.Controls.Add(this.rbtnA2time);
+            this.TeamA.Controls.Add(this.rbtnA1time);
+            this.TeamA.Controls.Add(this.radioButton1);
+            this.TeamA.Location = new System.Drawing.Point(12, 336);
+            this.TeamA.Name = "TeamA";
+            this.TeamA.Size = new System.Drawing.Size(393, 287);
+            this.TeamA.TabIndex = 6;
+            // 
+            // radioButton7
+            // 
+            this.radioButton7.AutoSize = true;
+            this.radioButton7.Location = new System.Drawing.Point(861, 130);
+            this.radioButton7.Name = "radioButton7";
+            this.radioButton7.Size = new System.Drawing.Size(27, 26);
+            this.radioButton7.TabIndex = 0;
+            this.radioButton7.TabStop = true;
+            this.radioButton7.UseVisualStyleBackColor = true;
+            // 
+            // rbtnA3time
+            // 
+            this.rbtnA3time.AutoCheck = false;
+            this.rbtnA3time.AutoSize = true;
+            this.rbtnA3time.Location = new System.Drawing.Point(149, 194);
+            this.rbtnA3time.Name = "rbtnA3time";
+            this.rbtnA3time.Size = new System.Drawing.Size(27, 26);
+            this.rbtnA3time.TabIndex = 0;
+            this.rbtnA3time.TabStop = true;
+            this.rbtnA3time.UseVisualStyleBackColor = true;
+            // 
+            // rbtnA2time
+            // 
+            this.rbtnA2time.AutoCheck = false;
+            this.rbtnA2time.AutoSize = true;
+            this.rbtnA2time.Location = new System.Drawing.Point(149, 162);
+            this.rbtnA2time.Name = "rbtnA2time";
+            this.rbtnA2time.Size = new System.Drawing.Size(27, 26);
+            this.rbtnA2time.TabIndex = 0;
+            this.rbtnA2time.TabStop = true;
+            this.rbtnA2time.UseVisualStyleBackColor = true;
+            // 
+            // rbtnA1time
+            // 
+            this.rbtnA1time.AutoCheck = false;
+            this.rbtnA1time.AutoSize = true;
+            this.rbtnA1time.Location = new System.Drawing.Point(149, 130);
+            this.rbtnA1time.Name = "rbtnA1time";
+            this.rbtnA1time.Size = new System.Drawing.Size(27, 26);
+            this.rbtnA1time.TabIndex = 0;
+            this.rbtnA1time.TabStop = true;
+            this.rbtnA1time.UseVisualStyleBackColor = true;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(149, 130);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(27, 26);
+            this.radioButton1.TabIndex = 0;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // TeamB
+            // 
+            this.TeamB.Controls.Add(this.rbtnB3time);
+            this.TeamB.Controls.Add(this.rbtnB2time);
+            this.TeamB.Controls.Add(this.rbtnB1time);
+            this.TeamB.Location = new System.Drawing.Point(655, 336);
+            this.TeamB.Name = "TeamB";
+            this.TeamB.Size = new System.Drawing.Size(394, 287);
+            this.TeamB.TabIndex = 7;
+            this.TeamB.TabStop = false;
+            // 
+            // rbtnB3time
+            // 
+            this.rbtnB3time.AutoCheck = false;
+            this.rbtnB3time.AutoSize = true;
+            this.rbtnB3time.Location = new System.Drawing.Point(218, 194);
+            this.rbtnB3time.Name = "rbtnB3time";
+            this.rbtnB3time.Size = new System.Drawing.Size(27, 26);
+            this.rbtnB3time.TabIndex = 0;
+            this.rbtnB3time.TabStop = true;
+            this.rbtnB3time.UseVisualStyleBackColor = true;
+            // 
+            // rbtnB2time
+            // 
+            this.rbtnB2time.AutoCheck = false;
+            this.rbtnB2time.AutoSize = true;
+            this.rbtnB2time.Location = new System.Drawing.Point(218, 162);
+            this.rbtnB2time.Name = "rbtnB2time";
+            this.rbtnB2time.Size = new System.Drawing.Size(27, 26);
+            this.rbtnB2time.TabIndex = 0;
+            this.rbtnB2time.TabStop = true;
+            this.rbtnB2time.UseVisualStyleBackColor = true;
+            // 
+            // rbtnB1time
+            // 
+            this.rbtnB1time.AutoCheck = false;
+            this.rbtnB1time.AutoSize = true;
+            this.rbtnB1time.Location = new System.Drawing.Point(218, 130);
+            this.rbtnB1time.Name = "rbtnB1time";
+            this.rbtnB1time.Size = new System.Drawing.Size(27, 26);
+            this.rbtnB1time.TabIndex = 0;
+            this.rbtnB1time.TabStop = true;
+            this.rbtnB1time.UseVisualStyleBackColor = true;
+            // 
             // BasketBallScoreBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1065, 693);
+            this.ClientSize = new System.Drawing.Size(1065, 894);
+            this.Controls.Add(this.TeamB);
+            this.Controls.Add(this.TeamA);
             this.Controls.Add(this.txtBscore);
             this.Controls.Add(this.txtAscore);
             this.Controls.Add(this.btnBstr);
@@ -424,6 +549,10 @@
             this.IsMdiContainer = true;
             this.Name = "BasketBallScoreBoard";
             this.Text = "BasketBallScoreBoard";
+            this.TeamA.ResumeLayout(false);
+            this.TeamA.PerformLayout();
+            this.TeamB.ResumeLayout(false);
+            this.TeamB.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -461,6 +590,16 @@
         private System.Windows.Forms.Button btnBstr;
         private System.Windows.Forms.TextBox txtAscore;
         private System.Windows.Forms.TextBox txtBscore;
+        private System.Windows.Forms.Panel TeamA;
+        private System.Windows.Forms.RadioButton radioButton7;
+        private System.Windows.Forms.RadioButton rbtnA3time;
+        private System.Windows.Forms.RadioButton rbtnA2time;
+        private System.Windows.Forms.RadioButton rbtnA1time;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.GroupBox TeamB;
+        private System.Windows.Forms.RadioButton rbtnB3time;
+        private System.Windows.Forms.RadioButton rbtnB2time;
+        private System.Windows.Forms.RadioButton rbtnB1time;
     }
 }
 
