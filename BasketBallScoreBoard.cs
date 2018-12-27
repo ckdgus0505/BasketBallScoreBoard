@@ -16,13 +16,42 @@ namespace BasketBallScoreBoard
         int bTeamScore = 0, bTeamFoul = 0, bTeamTime = 0;
         int quarter = 1;
         bool isAteamOffensive = true;
+        System.Windows.Forms.Timer timerx = new System.Windows.Forms.Timer();
+
+        DateTime startTime = DateTime.Now;
+        DateTime stopTime = DateTime.Now;
+
+
 
         public BasketBallScoreBoard()
         {
             InitializeComponent();
             Load += BasketBallScoreBoard_Load;
             btnScoreReset.Click += BtnScoreReset_Click;
+            btnStart.Click += BtnStart_Click;
+            GameTime.Text = "00:00";
+        }
 
+        private void BtnStart_Click(object sender, EventArgs e)
+        {
+            if (btnStart.Text == "Pause")
+            {
+                TotalTime.Stop();
+                ///timerx.Stop();
+                btnStart.Text = "Start";
+                stopTime = DateTime.Now;
+            }
+            else
+            {
+                btnStart.Text = "Pause";
+                startTime += (DateTime.Now - stopTime);
+                TotalTime.Start();
+                TotalTime.Enabled = true;
+                ///timerx.Start();
+                ///timerx.Enabled = true;
+            }
+            //GameTime.Text = stopTime.ToString();
+            //TotalTime.Interval = 1000;
         }
 
         private void BtnAScore(object sender, EventArgs e)
@@ -55,13 +84,18 @@ namespace BasketBallScoreBoard
             aTeamFoul ++ ;
         }
 
+        private void TotalTime_Tick(object sender, EventArgs e) // 시간에 지남에 따라 윈폼 최신화 가능
+        {
+            GameTime.Text = DateTime.Now.Ticks.ToString();
+            //GameTime.Text = DateTime.Now.ToLongTimeString();
+        }
 
         private void BtnBFoul(object sender, EventArgs e)
         {
             Button b = (Button)sender;
             bTeamFoul++;
         }
-
+    
         private void BtnATime(object sender, EventArgs e)
         {
             Button a = (Button)sender;
@@ -99,7 +133,7 @@ namespace BasketBallScoreBoard
         private void BasketBallScoreBoard_Load(object sender, EventArgs e)
         {
             ScoreBoard scoreboard = new ScoreBoard(aTeamScore, bTeamScore);
-            scoreboard.Show();
+            //scoreboard.Show();
         }
     }
 }

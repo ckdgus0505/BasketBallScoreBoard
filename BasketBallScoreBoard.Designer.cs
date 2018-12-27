@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BasketBallScoreBoard));
             this.btnPlay = new System.Windows.Forms.Button();
             this.btn24start = new System.Windows.Forms.Button();
@@ -69,6 +70,8 @@
             this.rbtnB3time = new System.Windows.Forms.RadioButton();
             this.rbtnB2time = new System.Windows.Forms.RadioButton();
             this.rbtnB1time = new System.Windows.Forms.RadioButton();
+            this.TotalTime = new System.Windows.Forms.Timer(this.components);
+            this.GameTime = new System.Windows.Forms.Label();
             this.TeamA.SuspendLayout();
             this.TeamB.SuspendLayout();
             this.SuspendLayout();
@@ -142,7 +145,7 @@
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(143, 75);
             this.btnStart.TabIndex = 1;
-            this.btnStart.Text = "START\r\nSTOP";
+            this.btnStart.Text = "Start";
             this.btnStart.UseVisualStyleBackColor = false;
             // 
             // btnBuzzer
@@ -506,12 +509,31 @@
             this.rbtnB1time.TabStop = true;
             this.rbtnB1time.UseVisualStyleBackColor = true;
             // 
+            // TotalTime
+            // 
+            this.TotalTime.Enabled = true;
+            this.TotalTime.Interval = 10;
+            this.TotalTime.Tick += new System.EventHandler(this.TotalTime_Tick);
+            // 
+            // GameTime
+            // 
+            this.GameTime.AutoSize = true;
+            this.GameTime.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.GameTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GameTime.ForeColor = System.Drawing.Color.Red;
+            this.GameTime.Location = new System.Drawing.Point(210, 355);
+            this.GameTime.Name = "GameTime";
+            this.GameTime.Size = new System.Drawing.Size(82, 31);
+            this.GameTime.TabIndex = 8;
+            this.GameTime.Text = "00:00";
+            // 
             // BasketBallScoreBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1065, 894);
+            this.Controls.Add(this.GameTime);
             this.Controls.Add(this.TeamB);
             this.Controls.Add(this.TeamA);
             this.Controls.Add(this.txtBscore);
@@ -546,7 +568,6 @@
             this.Controls.Add(this.btnPlay);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.IsMdiContainer = true;
             this.Name = "BasketBallScoreBoard";
             this.Text = "BasketBallScoreBoard";
             this.TeamA.ResumeLayout(false);
@@ -600,6 +621,8 @@
         private System.Windows.Forms.RadioButton rbtnB3time;
         private System.Windows.Forms.RadioButton rbtnB2time;
         private System.Windows.Forms.RadioButton rbtnB1time;
+        private System.Windows.Forms.Timer TotalTime;
+        private System.Windows.Forms.Label GameTime;
     }
 }
 
