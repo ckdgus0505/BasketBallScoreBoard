@@ -15,13 +15,17 @@ namespace BasketBallScoreBoard
         int aTeamScore = 0, aTeamFoul = 0, aTeamTime = 0;
         int bTeamScore = 0, bTeamFoul = 0, bTeamTime = 0;
         int quarter = 1;
-        bool isAteamOffensive = true;
-        System.Windows.Forms.Timer timerx = new System.Windows.Forms.Timer();
+        bool isGameStart = false;
 
-        DateTime startTime = DateTime.Now;
-        DateTime stopTime = DateTime.Now;
-
-
+        DateTime startTime;
+        DateTime stopTime1;
+        DateTime stopTime2;
+        DateTime sec24;
+        DateTime sec24stop1;
+        DateTime sec24stop2;
+        
+        int min = 45;
+        int sec = 0;
 
         public BasketBallScoreBoard()
         {
@@ -29,29 +33,171 @@ namespace BasketBallScoreBoard
             Load += BasketBallScoreBoard_Load;
             btnScoreReset.Click += BtnScoreReset_Click;
             btnStart.Click += BtnStart_Click;
-            GameTime.Text = "00:00";
+            btn24start.Click += Btn24start_Click;
+            btnMup.Click += BtnMup_Click;
+            btnMdown.Click += BtnMdown_Click;
+            btnSup.Click += BtnSup_Click;
+            btnSdown.Click += BtnSdown_Click;
+            btnQuarter.Click += BtnQuarter_Click;
+            btn24reset.Click += Btn24reset_Click;
+        }
+
+        private void Btn24start_Click(object sender, EventArgs e)
+        {
+            if (btn24start.Text == "Pause")
+            {
+                sec24stop1 = DateTime.Now;
+                btn24start.Text = "Start";
+            }
+            else
+            {
+                sec24stop2 = DateTime.Now;
+                sec24 += sec24stop2 - sec24stop1;
+                btn24start.Text = "Pause";
+            }
+        }
+
+        private void Btn24reset_Click(object sender, EventArgs e)
+        {
+            sec24 = DateTime.Now.Add(new TimeSpan(0, 0, 0, 24));
+        }
+
+        private void BtnQuarter_Click(object sender, EventArgs e)
+        {
+            if (quarter >= 1 && quarter <= 5)
+            {
+                quarter++;
+                if (quarter == 1) rbtnQ1.Checked = true;
+                if (quarter == 2)
+                {
+                    rbtnQ1.Checked = false;
+                    rbtnQ2.Checked = true;
+                }
+                if (quarter == 3)
+                {
+                    rbtnQ2.Checked = false;
+                    rbtnQ3.Checked = true;
+                }
+                if (quarter == 4)
+                {
+                    rbtnQ3.Checked = false;
+                    rbtnQ4.Checked = true;
+                }
+                if (quarter == 5)
+                {
+                    rbtnQ4.Checked = false;
+                    rbtnQ5.Checked = true;
+                    btnQuarter.Enabled = false;
+                }
+            }
+        }
+
+        private void BtnSdown_Click(object sender, EventArgs e)
+        {
+            sec--;
+            GameTime.Text = min.ToString() + ":" + sec.ToString();
+        }
+
+        private void BtnSup_Click(object sender, EventArgs e)
+        {
+            sec++;
+            GameTime.Text = min.ToString() + ":" + sec.ToString();
+        }
+
+        private void BtnMdown_Click(object sender, EventArgs e)
+        {
+            min--;
+            GameTime.Text = min.ToString() + ":" + sec.ToString();
+        }
+
+        private void BtnMup_Click(object sender, EventArgs e)
+        {
+            min++;
+            GameTime.Text = min.ToString() + ":" + sec.ToString();
+        }
+
+        private void ShowTime()
+        {
+            if (btn24start.Text == "start")
+            {
+
+                time24.Text = "";
+            }
+            else
+            {
+                if ((startTime - DateTime.Now).Minutes == 0 && (startTime - DateTime.Now).Seconds == 0 && (startTime - DateTime.Now).Milliseconds < 1)
+                {
+                    isGameStart = false;
+                    GameTime.Text = "00:00";
+                    time24.Text = "24";
+                    btnStart.Text = "Start";
+                }
+                if ((sec24 - DateTime.Now).Seconds == 0 && (sec24 - DateTime.Now).Milliseconds < 1)
+                {
+                    sec24 = sec24.Add(new TimeSpan(0, 0, 0, 24));
+
+                }
+                if (isGameStart == true)
+                {
+                    if ((startTime - DateTime.Now) <= (sec24 - DateTime.Now))
+                    {
+                        GameTime.Text = "";
+                        if ((startTime - DateTime.Now).Seconds >= 5)
+                        {
+                            time24.Text = (startTime - DateTime.Now).Seconds.ToString();
+                        }
+                        else
+                        {
+                            time24.Text = (startTime - DateTime.Now).Seconds.ToString() + ":" + (startTime - DateTime.Now).Milliseconds.ToString();
+                        }
+                    }
+                    else
+                    {
+                        GameTime.Text = (startTime - DateTime.Now).Minutes.ToString() + ":" + (startTime - DateTime.Now).Seconds.ToString();
+                        if ((sec24 - DateTime.Now).Seconds >= 5)
+                        {
+                            time24.Text = (sec24 - DateTime.Now).Seconds.ToString();
+                        }
+                        else
+                        {
+                            time24.Text = (sec24 - DateTime.Now).Seconds.ToString() + ":" + (sec24 - DateTime.Now).Milliseconds.ToString();
+                        }
+                    }
+                }
+            }
+            
         }
 
         private void BtnStart_Click(object sender, EventArgs e)
         {
+            if(isGameStart == false)
+            {
+                startTime = DateTime.Now;
+                stopTime1 = stopTime2 = startTime;
+                sec24 = sec24stop1 = sec24stop2 =  startTime;
+                startTime = startTime.Add(new TimeSpan(0, 0, min, sec));
+                sec24 = sec24.Add(new TimeSpan(0, 0, 0, 24));
+                isGameStart = true;
+                btn24start.Text = "Pause";
+            }
             if (btnStart.Text == "Pause")
             {
-                TotalTime.Stop();
-                ///timerx.Stop();
+                stopTime1 = DateTime.Now;
+                sec24stop1 = stopTime1;
                 btnStart.Text = "Start";
-                stopTime = DateTime.Now;
+
+                SYNC.Stop();
             }
             else
             {
+                stopTime2 = DateTime.Now;
+                sec24stop2 = stopTime2;
+                startTime += stopTime2 - stopTime1;
+                sec24 += sec24stop2 - sec24stop1;
                 btnStart.Text = "Pause";
-                startTime += (DateTime.Now - stopTime);
-                TotalTime.Start();
-                TotalTime.Enabled = true;
-                ///timerx.Start();
-                ///timerx.Enabled = true;
+
+                SYNC.Start();
             }
-            //GameTime.Text = stopTime.ToString();
-            //TotalTime.Interval = 1000;
         }
 
         private void BtnAScore(object sender, EventArgs e)
@@ -84,10 +230,9 @@ namespace BasketBallScoreBoard
             aTeamFoul ++ ;
         }
 
-        private void TotalTime_Tick(object sender, EventArgs e) // 시간에 지남에 따라 윈폼 최신화 가능
+        private void SYNC_Tick(object sender, EventArgs e) // 시간에 지남에 따라 윈폼 최신화 가능
         {
-            GameTime.Text = DateTime.Now.Ticks.ToString();
-            //GameTime.Text = DateTime.Now.ToLongTimeString();
+            ShowTime();
         }
 
         private void BtnBFoul(object sender, EventArgs e)
@@ -129,6 +274,7 @@ namespace BasketBallScoreBoard
             }
 
         }
+        
 
         private void BasketBallScoreBoard_Load(object sender, EventArgs e)
         {
