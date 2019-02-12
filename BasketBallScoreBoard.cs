@@ -64,7 +64,14 @@ namespace BasketBallScoreBoard
 
         private void Btn24reset_Click(object sender, EventArgs e)
         {
-            sec24 = DateTime.Now.Add(new TimeSpan(0, 0, 0, 24));
+            if(btnStart.Text == "Pause")
+            {
+                sec24 = DateTime.Now.Add(new TimeSpan(0, 0, 0, 24));
+            }
+            else // stoptime1 때에서부터 24초를 해줘야 함
+            {
+                sec24 = stopTime1.Add(new TimeSpan(0, 0, 0, 24));
+            }
         }
 
         private void BtnQuarter_Click(object sender, EventArgs e)
