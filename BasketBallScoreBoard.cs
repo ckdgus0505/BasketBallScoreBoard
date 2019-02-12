@@ -44,16 +44,21 @@ namespace BasketBallScoreBoard
 
         private void Btn24start_Click(object sender, EventArgs e)
         {
-            if (btn24start.Text == "Pause")
+            if (btnStart.Text == "Pause")
             {
-                sec24stop1 = DateTime.Now;
-                btn24start.Text = "Start";
-            }
-            else
-            {
-                sec24stop2 = DateTime.Now;
-                sec24 += sec24stop2 - sec24stop1;
-                btn24start.Text = "Pause";
+                if(btn24start.Text == "Pause")
+                {
+                    sec24stop1 = DateTime.Now;
+                    btn24start.Text = "Start";
+                    SYNC24.Stop();
+                }
+                else if (btn24start.Text == "Start")
+                {
+                    sec24stop2 = DateTime.Now;
+                    sec24 += sec24stop2 - sec24stop1;
+                    btn24start.Text = "Pause";
+                    SYNC24.Start();
+                }
             }
         }
 
@@ -132,40 +137,60 @@ namespace BasketBallScoreBoard
                     time24.Text = "24";
                     btnStart.Text = "Start";
                 }
-                if ((sec24 - DateTime.Now).Seconds == 0 && (sec24 - DateTime.Now).Milliseconds < 1)
-                {
-                    sec24 = sec24.Add(new TimeSpan(0, 0, 0, 24));
-
-                }
                 if (isGameStart == true)
                 {
                     if ((startTime - DateTime.Now) <= (sec24 - DateTime.Now))
                     {
                         GameTime.Text = "";
-                        if ((startTime - DateTime.Now).Seconds >= 5)
-                        {
-                            time24.Text = (startTime - DateTime.Now).Seconds.ToString();
-                        }
-                        else
-                        {
-                            time24.Text = (startTime - DateTime.Now).Seconds.ToString() + ":" + (startTime - DateTime.Now).Milliseconds.ToString();
-                        }
                     }
                     else
                     {
                         GameTime.Text = (startTime - DateTime.Now).Minutes.ToString() + ":" + (startTime - DateTime.Now).Seconds.ToString();
-                        if ((sec24 - DateTime.Now).Seconds >= 5)
-                        {
-                            time24.Text = (sec24 - DateTime.Now).Seconds.ToString();
-                        }
-                        else
-                        {
-                            time24.Text = (sec24 - DateTime.Now).Seconds.ToString() + ":" + (sec24 - DateTime.Now).Milliseconds.ToString();
-                        }
                     }
                 }
             }
-            
+        }
+
+        private void ShowTime24()
+        {
+
+            if ((startTime - DateTime.Now).Minutes == 0 && (startTime - DateTime.Now).Seconds == 0 && (startTime - DateTime.Now).Milliseconds < 1)
+            {
+                isGameStart = false;
+                time24.Text = "24";
+                btnStart.Text = "Start";
+            }
+            if ((sec24 - DateTime.Now).Seconds == 0 && (sec24 - DateTime.Now).Milliseconds < 1)
+            {
+                sec24 = sec24.Add(new TimeSpan(0, 0, 0, 24));
+
+            }
+            if (isGameStart == true)
+            {
+                if ((startTime - DateTime.Now) <= (sec24 - DateTime.Now))
+                {
+                    if ((startTime - DateTime.Now).Seconds >= 5)
+                    {
+                        time24.Text = (startTime - DateTime.Now).Seconds.ToString();
+                    }
+                    else
+                    {
+                        time24.Text = (startTime - DateTime.Now).Seconds.ToString() + ":" + (startTime - DateTime.Now).Milliseconds.ToString();
+                    }
+                }
+                else
+                {
+                    if ((sec24 - DateTime.Now).Seconds >= 5)
+                    {
+                        time24.Text = (sec24 - DateTime.Now).Seconds.ToString();
+                    }
+                    else
+                    {
+                        time24.Text = (sec24 - DateTime.Now).Seconds.ToString() + ":" + (sec24 - DateTime.Now).Milliseconds.ToString();
+                    }
+                }
+            }
+
         }
 
         private void BtnStart_Click(object sender, EventArgs e)
@@ -185,8 +210,10 @@ namespace BasketBallScoreBoard
                 stopTime1 = DateTime.Now;
                 sec24stop1 = stopTime1;
                 btnStart.Text = "Start";
+                btn24start.Text = "Start";
 
                 SYNC.Stop();
+                SYNC24.Stop();
             }
             else
             {
@@ -195,8 +222,10 @@ namespace BasketBallScoreBoard
                 startTime += stopTime2 - stopTime1;
                 sec24 += sec24stop2 - sec24stop1;
                 btnStart.Text = "Pause";
+                btn24start.Text = "Pause";
 
                 SYNC.Start();
+                SYNC24.Start();
             }
         }
 
@@ -233,6 +262,11 @@ namespace BasketBallScoreBoard
         private void SYNC_Tick(object sender, EventArgs e) // 시간에 지남에 따라 윈폼 최신화 가능
         {
             ShowTime();
+        }
+
+        private void SYNC24_Tick(object sender, EventArgs e)
+        {
+            ShowTime24();
         }
 
         private void BtnBFoul(object sender, EventArgs e)

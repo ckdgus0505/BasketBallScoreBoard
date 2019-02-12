@@ -78,6 +78,7 @@
             this.rbtnQ3 = new System.Windows.Forms.RadioButton();
             this.rbtnQ4 = new System.Windows.Forms.RadioButton();
             this.rbtnQ5 = new System.Windows.Forms.RadioButton();
+            this.SYNC24 = new System.Windows.Forms.Timer(this.components);
             this.TeamA.SuspendLayout();
             this.TeamB.SuspendLayout();
             this.SuspendLayout();
@@ -638,6 +639,10 @@
             this.rbtnQ5.TabIndex = 10;
             this.rbtnQ5.UseVisualStyleBackColor = true;
             // 
+            // SYNC24
+            // 
+            this.SYNC24.Tick += new System.EventHandler(this.SYNC24_Tick);
+            // 
             // BasketBallScoreBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -747,6 +752,7 @@
         private System.Windows.Forms.RadioButton rbtnQ3;
         private System.Windows.Forms.RadioButton rbtnQ4;
         private System.Windows.Forms.RadioButton rbtnQ5;
+        private System.Windows.Forms.Timer SYNC24;
     }
 }
 
